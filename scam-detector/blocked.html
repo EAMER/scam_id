@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Blocked</title>
+    <link rel="stylesheet" href="blocked.css">
+</head>
+<body>
+    <main class="blocked-shell">
+        <section class="blocked-card">
+            <div class="blocked-card__badge">Scam Detector</div>
+            <h1 class="blocked-card__title">This site is manually blocked</h1>
+            <p class="blocked-card__body">
+                You added <strong id="blockedDomain">this site</strong> to your Scam Detector block list,
+                so navigation was stopped before the page could load.
+            </p>
+
+            <div class="blocked-card__actions">
+                <button id="goBackBtn" class="blocked-button blocked-button--secondary">Go back</button>
+                <button id="unblockBtn" class="blocked-button blocked-button--primary">Unblock and continue</button>
+            </div>
+
+            <p id="blockedMessage" class="blocked-card__hint">
+                Remove the block only if you trust this domain.
+            </p>
+        </section>
+    </main>
+
+    <script src="blocked.js"></script>
+</body>
+</html>

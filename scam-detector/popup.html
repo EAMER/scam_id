@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scam Detector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="popup-body">
+    <div class="app-shell">
+        <header class="hero">
+            <div class="hero__brand">
+                <img src="icons/scams.png" alt="Scam Detector logo" class="hero__logo">
+                <div>
+                    <p class="hero__eyebrow">Live website trust check</p>
+                    <h1 class="hero__title">Scam Detector</h1>
+                </div>
+            </div>
+            <span id="scanSourceBadge" class="badge badge--hero">Ready</span>
+        </header>
+
+        <main class="content-stack">
+            <section class="card context-card">
+                <p class="section-label">Current page</p>
+                <h2 id="pageTitle" class="context-card__title">Open a page to scan</h2>
+                <p id="urlInput" class="context-card__url">Switch to a website tab to begin.</p>
+                <div class="context-card__meta">
+                    <span id="domainPill" class="pill">No domain</span>
+                    <span id="freshnessPill" class="pill pill--muted">Waiting for scan</span>
+                </div>
+            </section>
+
+            <section class="actions">
+                <button id="freshScanBtn" class="button button--primary">
+                    <span id="scanBtnText">Rescan</span>
+                    <span id="scanLoader" class="button__loader hidden" aria-hidden="true"></span>
+                </button>
+                <button id="blockBtn" class="button button--danger">
+                    <span id="blockBtnText">Block site</span>
+                </button>
+            </section>
+
+            <section id="loadingState" class="card loading-card hidden">
+                <div class="loading-card__ring" aria-hidden="true"></div>
+                <div class="loading-card__lines" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <p id="loadingText" class="loading-card__text">Analyzing live page signals...</p>
+            </section>
+
+            <section id="resultsSection" class="results hidden">
+                <section class="card score-card">
+                    <div class="score-card__ring">
+                        <svg class="score-chart" viewBox="0 0 120 120" aria-hidden="true">
+                            <circle cx="60" cy="60" r="54" class="score-chart__track"></circle>
+                            <circle
+                                id="riskCircle"
+                                cx="60"
+                                cy="60"
+                                r="54"
+                                class="score-chart__progress"
+                                stroke-dasharray="339.29"
+                                stroke-dashoffset="339.29"
+                            ></circle>
+                        </svg>
+                        <div class="score-card__value">
+                            <span id="riskScore" class="score-card__number">0</span>
+                            <span class="score-card__unit">Risk</span>
+                        </div>
+                    </div>
+
+                    <div class="score-card__content">
+                        <p class="section-label">Risk score</p>
+                        <div class="score-card__headline">
+                            <h2 id="statusHeadline">Ready to scan</h2>
+                            <span id="riskLevelLabel" class="badge badge--muted">Pending</span>
+                        </div>
+                        <p id="statusBody" class="score-card__body">
+                            We combine backend checks with the live page you have open.
+                        </p>
+
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <span class="summary-item__label">Trust</span>
+                                <span id="trustValue" class="summary-item__value">--</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-item__label">TLS</span>
+                                <span id="sslValue" class="summary-item__value">--</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-item__label">Domain</span>
+                                <span id="domainValue" class="summary-item__value">--</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-item__label">Page signals</span>
+                                <span id="pageSignalsValue" class="summary-item__value">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="statusMessage" class="card alert-card alert-card--safe">
+                    <div id="statusIcon" class="alert-card__icon">OK</div>
+                    <div class="alert-card__content">
+                        <p id="statusText" class="alert-card__title">This page looks safe.</p>
+                        <p id="statusDescription" class="alert-card__body">
+                            No strong scam indicators were detected.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card__header">
+                        <div>
+                            <p class="section-label">What we found</p>
+                            <h3 class="card__title">Threat details</h3>
+                        </div>
+                        <button id="reportBtn" class="button button--ghost">Report site</button>
+                    </div>
+                    <div id="detailsList" class="detail-list"></div>
+                </section>
+            </section>
+
+            <p id="helperText" class="helper-text">
+                Scans begin automatically when the popup opens. Use Rescan when you want a fresh check.
+            </p>
+        </main>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

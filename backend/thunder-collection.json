@@ -1,0 +1,105 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Scam Detector API",
+  "dateExported": "2026-05-25T10:30:00Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "name": "Scanning",
+      "items": [
+        {
+          "name": "Health Check",
+          "method": "GET",
+          "url": "http://localhost:3000/health",
+          "auth": {},
+          "params": []
+        },
+        {
+          "name": "Scan Legitimate Website",
+          "method": "POST",
+          "url": "http://localhost:3000/scan",
+          "body": {
+            "type": "json",
+            "content": {
+              "url": "https://amazon.com",
+              "timestamp": "2026-05-25T10:30:00Z",
+              "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            }
+          },
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        },
+        {
+          "name": "Scan Typosquatting Domain",
+          "method": "POST",
+          "url": "http://localhost:3000/scan",
+          "body": {
+            "type": "json",
+            "content": {
+              "url": "https://paypa1.com",
+              "timestamp": "2026-05-25T10:30:00Z",
+              "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            }
+          },
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        },
+        {
+          "name": "Scan Giveaway Scam",
+          "method": "POST",
+          "url": "http://localhost:3000/scan",
+          "body": {
+            "type": "json",
+            "content": {
+              "url": "https://example.com/free-iphone-giveaway-claim-now",
+              "timestamp": "2026-05-25T10:30:00Z",
+              "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            }
+          },
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        },
+        {
+          "name": "Scan No HTTPS Domain",
+          "method": "POST",
+          "url": "http://localhost:3000/scan",
+          "body": {
+            "type": "json",
+            "content": {
+              "url": "http://insecure-website.com",
+              "timestamp": "2026-05-25T10:30:00Z",
+              "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            }
+          },
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reporting",
+      "items": [
+        {
+          "name": "Report Scam",
+          "method": "POST",
+          "url": "http://localhost:3000/scan/report",
+          "body": {
+            "type": "json",
+            "content": {
+              "url": "https://malicious-website.com",
+              "timestamp": "2026-05-25T10:30:00Z",
+              "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            }
+          },
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        }
+      ]
+    }
+  ]
+}
